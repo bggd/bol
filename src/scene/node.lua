@@ -9,6 +9,7 @@ function Node.create()
     -- properties
     globalPosition = Vector3.zero(),
     position = Vector3.zero(),
+    isQueuedForDeletion = false,
 
     -- callbacks
     onReady = nil,
@@ -50,6 +51,32 @@ function Node.propagate(node)
 
   for _, v in ipairs(node.children) do
     Node.propagate(v)
+  end
+end
+
+function Node.queueFree(node)
+  node.isQueuedForDeletion = true
+end
+
+function Node.freeRecursive(node)
+  local freeRequest = false
+  for _, v in ipairs(node.children) do
+    if v.isQueuedForDeletion then
+      freeRequest = true
+      break
+    end
+  end
+
+  if freeRequest then
+    local tbl = {}
+    for _, v in ipairs(node.children) do
+      if not v.isQueuedForDeletion then table.insert(tbl, v) end
+    end
+    node.children = tbl
+  end
+
+  for _, v in ipairs(node.children) do
+    Node.freeRecursive(v)
   end
 end
 

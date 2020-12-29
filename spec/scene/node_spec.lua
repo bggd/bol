@@ -32,4 +32,26 @@ describe("Node", function()
     assert.True(foundChild)
   end)
 
+  it("Node.queueFree", function()
+    local root = Node.create()
+    local a = Node.create()
+    local b = Node.create()
+    local c = Node.create()
+
+    Node.addChild(root, a)
+    Node.addChild(root, b)
+    Node.addChild(root, c)
+
+    assert.False(c.isQueuedForDeletion)
+    Node.queueFree(c)
+    assert.True(c.isQueuedForDeletion)
+
+    assert.True(#root.children == 3)
+
+    Node.freeRecursive(root)
+
+    assert.True(#root.children == 2)
+
+  end)
+
 end)
