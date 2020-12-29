@@ -78,5 +78,9 @@ luac.out
 
 # === My .gitignore ===
 
+.cache
+build
+compile_commands.json
 lua
 tags
+external/assimp
