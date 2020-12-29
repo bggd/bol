@@ -1,6 +1,6 @@
-local Signal = require("signal")
+local Signal = require("scene.signal")
 
-local Node = require("node")
+local Node = require("scene.node")
 local Vector3 = require("gmath.vector3")
 
 describe("Signal", function()

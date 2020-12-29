@@ -1,4 +1,4 @@
-local Node = require("node")
+local Node = require("scene.node")
 
 describe("Node", function()
 

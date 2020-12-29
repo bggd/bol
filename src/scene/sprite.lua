@@ -1,6 +1,6 @@
 local Sprite = {}
 
-local Node = require("node")
+local Node = require("scene.node")
 
 function Sprite.create()
   local obj = Node.create()

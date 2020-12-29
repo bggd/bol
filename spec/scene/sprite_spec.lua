@@ -1,4 +1,4 @@
-local Sprite = require("sprite")
+local Sprite = require("scene.sprite")
 
 describe("Sprite", function()
 
