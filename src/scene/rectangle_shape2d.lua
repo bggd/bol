@@ -1,11 +1,11 @@
 local RectangleShape2D = {}
 
+local Node = require("scene.node")
 local Vector3 = require("gmath.vector3")
 
 function RectangleShape2D.create()
-  local obj = {
-    extents = Vector3.zero()
-  }
+  local obj = Node.create()
+  obj.extents = Vector3.zero()
   return obj
 end
 
