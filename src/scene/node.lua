@@ -31,6 +31,8 @@ function Node.create()
   return obj
 end
 
+---@param node gd.Node
+---@param parent gd.Node
 function Node.setParent(node, parent)
   assert(node ~= parent)
   assert(parent.parent ~= node)
@@ -38,11 +40,14 @@ function Node.setParent(node, parent)
   node.parent = parent
 end
 
+---@param node gd.Node
+---@param child gd.Node
 function Node.addChild(node, child)
   table.insert(node.children, child)
   Node.setParent(child, node)
 end
 
+---@param node gd.Node
 function Node.propagate(node)
   if node.onProcess then
     assert(type(node.onProcess) == "function")
@@ -66,10 +71,12 @@ function Node.propagate(node)
   end
 end
 
+---@param node gd.Node
 function Node.queueFree(node)
   node.isQueuedForDeletion = true
 end
 
+---@param node gd.Node
 function Node.freeRecursive(node)
   local freeRequest = false
   for _, v in ipairs(node.children) do
