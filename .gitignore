@@ -84,3 +84,7 @@ compile_commands.json
 lua
 tags
 external/assimp
+.idea
+.nvimlog
+main.lua
+*.png
