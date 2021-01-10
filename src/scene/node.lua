@@ -1,6 +1,18 @@
+---@class gd.Node
+---@field parent gd.Node
+---@field children gd.Node[]
+---@field globalPosition gmath.Vector3
+---@field position gmath.Vector3
+---@field isQueuedForDeletion boolean
+---@field onReady fun(self:gd.Node)
+---@field onProcess fun(self:gd.Node)
+---@field onDraw fun(self:gd.Node)
 local Node = {}
+
 local Vector3 = require("gmath.vector3")
 
+
+---@return gd.Node
 function Node.create()
   local obj = {
     parent = nil,

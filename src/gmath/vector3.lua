@@ -1,9 +1,16 @@
+---@class gmath.Vector3
 local Vector3 = {}
 
+---@param v gmath.Vector3
+---@return boolean
 function Vector3.isVector3(v)
   return v ~= nil and #v == 3 and type(v[1]) == "number" and type(v[2]) == "number" and type(v[3]) == "number"
 end
 
+---@param x number
+---@param y number
+---@param z number
+---@return gmath.Vector3
 function Vector3.create(x, y, z)
   assert(type(x) == "number")
   assert(type(y) == "number")
@@ -13,10 +20,14 @@ function Vector3.create(x, y, z)
   return v
 end
 
+---@return gmath.Vector3
 function Vector3.zero()
   return {0.0, 0.0, 0.0}
 end
 
+---@param a gmath.Vector3
+---@param b gmath.Vector3
+---@return gmath.Vector3
 function Vector3.add(a, b)
   assert(Vector3.isVector3(a))
   assert(Vector3.isVector3(b))
@@ -28,6 +39,9 @@ function Vector3.add(a, b)
   return v
 end
 
+---@param a gmath.Vector3
+---@param b gmath.Vector3
+---@return gmath.Vector3
 function Vector3.sub(a, b)
   assert(Vector3.isVector3(a))
   assert(Vector3.isVector3(b))
@@ -39,6 +53,9 @@ function Vector3.sub(a, b)
   return v
 end
 
+---@param a gmath.Vector3
+---@param b gmath.Vector3
+---@return gmath.Vector3
 function Vector3.mul(a, b)
   assert(Vector3.isVector3(a))
   assert(Vector3.isVector3(b))
@@ -50,6 +67,9 @@ function Vector3.mul(a, b)
   return v
 end
 
+---@param a gmath.Vector3
+---@param scalar number
+---@return gmath.Vector3
 function Vector3.mulScalar(a, scalar)
   assert(Vector3.isVector3(a))
 
@@ -60,6 +80,9 @@ function Vector3.mulScalar(a, scalar)
   return v
 end
 
+---@param a gmath.Vector3
+---@param b gmath.Vector3
+---@return number
 function Vector3.dot(a, b)
   assert(Vector3.isVector3(a))
   assert(Vector3.isVector3(b))
@@ -71,18 +94,24 @@ function Vector3.dot(a, b)
   return dot
 end
 
+---@param v gmath.Vector3
+---@return number
 function Vector3.length(v)
   assert(Vector3.isVector3(v))
 
   return math.sqrt(Vector3.dot(v, v))
 end
 
+---@param v gmath.Vector3
+---@return number
 function Vector3.lengthWidthoutSqrt(v)
   assert(Vector3.isVector3(v))
 
   return Vector3.dot(v, v)
 end
 
+---@param v gmath.Vector3
+---@return gmath.Vector3
 function Vector3.normalize(v)
   assert(Vector3.isVector3(v))
 
@@ -94,6 +123,9 @@ function Vector3.normalize(v)
   return n
 end
 
+---@param a gmath.Vector3
+---@param b gmath.Vector3
+---@return gmath.Vector3
 function Vector3.cross(a, b)
   assert(Vector3.isVector3(a))
   assert(Vector3.isVector3(b))

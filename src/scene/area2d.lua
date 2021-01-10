@@ -1,3 +1,5 @@
+---@class Area2D : gd.Node
+---@field areaEntered gd.Signal
 local Area2D = {}
 
 local Node = require("scene.node")

@@ -1,7 +1,9 @@
+---@class gd.Sprite : gd.Node
 local Sprite = {}
 
 local Node = require("scene.node")
 
+---@return gd.Sprite
 function Sprite.create()
   local obj = Node.create()
 
@@ -15,6 +17,8 @@ function Sprite.create()
   return obj
 end
 
+---@param spr gd.Sprite
+---@param image any
 function Sprite.setImage(spr, image)
   assert(image:typeOf("Image"))
 
